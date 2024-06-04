@@ -3,11 +3,10 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
-
 const app = express();
-
 app.use(express.json());
 
 mongoose
@@ -21,6 +20,9 @@ mongoose
 
 // Define the port number
 const PORT = process.env.PORT || 3001;
+
+
+app.use(cookieParser());
 
 // Start the server
 app.listen(PORT, () => {
