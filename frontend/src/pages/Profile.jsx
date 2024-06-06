@@ -5,7 +5,7 @@ import { app } from '../firebase';
 import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutUserStart } from "../redux/user/userSlice.js";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 export default function Profile() {
   const fileRef = useRef(null);
@@ -135,14 +135,14 @@ export default function Profile() {
         ></img>
         <p className='text-sm self-center '>
           {fileUploadError ? (
-          <span className="text-red-700">Error Image Upload
+          <span className="text-red-800">Error Image Upload
           (Image must be less than 10 mb)</span> 
           ) : filePerc > 0 && filePerc < 100 ? (
-            <span className="text-yellow-700">
+            <span className="text-yellow-600">
               {`Uploading ${filePerc}%`}
             </span>
           ) :  filePerc === 100 ? (
-              <span className="text-yellow-700">Image uploaded successfully!</span>
+              <span className="text-yellow-600">Image uploaded successfully!</span>
           ) : (
             ''
           )}
@@ -169,16 +169,17 @@ export default function Profile() {
           id="password"
           className="border p-3 rounded-lg"
         ></input>
-        <button disabled={loading} className="bg-yellow-700 text-white rounded-lg p-3 hover:opacity-80 disabled:opacity-70">
+        <button disabled={loading} className="bg-yellow-600 text-white rounded-lg p-3 hover:opacity-80 disabled:opacity-70">
           {loading ? 'Loading...': 'Update'}
         </button>
+        <Link className='bg-amber-400 text-white p-3 rounded-lg text-center hover:opacity-80' to={"/create-listing"}>Create Listing</Link>
       </form>
       <div className="flex flex-col justify-between mt-2">
-        <span onClick = {handleDeleteUser} className="text-red-700 cursor-pointer">Delete account</span>
-        <span onClick = {handleSignOut} className="text-red-700 cursor-pointer">Sign out</span>
+        <span onClick = {handleDeleteUser} className="text-red-800 cursor-pointer">Delete account</span>
+        <span onClick = {handleSignOut} className="text-red-800 cursor-pointer">Sign out</span>
       </div>
 
-      <p className="text-yellow-700 mt-5">{updateSuccess ? 'User is updated successfully!' : ''}</p>
+      <p className="text-yellow-600 mt-5">{updateSuccess ? 'User is updated successfully!' : ''}</p>
 
     </div>
   );
