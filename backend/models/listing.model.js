@@ -51,10 +51,6 @@ const listingSchema = new mongoose.Schema(
             type: Boolean,
             required: true,
         },
-        image:{
-            type: String,
-            required: true,
-        },
         imageUrls:{
             type:Array,
             required: true,
@@ -64,7 +60,7 @@ const listingSchema = new mongoose.Schema(
             required: true,
         },
     }, {timestamps: true}
-)
+);
 
 const Listing = mongoose.model('Listing', listingSchema);
 
