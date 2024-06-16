@@ -38,7 +38,7 @@ export default function Header() {
                     <button><FaSearch className='text-yellow-500' /></button>
                 </form>
                 <ul className='flex gap-4'>
-                    <Link to = '/home'>
+                    <Link to = '/'>
                         <li className='hidden sm:inline text-yellow-700 hover:underline'>Home</li>
                     </Link>
                     <Link to ='/about'>
