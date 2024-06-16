@@ -123,7 +123,7 @@ export default function Search() {
         const res = await fetch(`/api/listing/get?${searchQuery}`);
         const data = await res.json();
         if (data.length < 9) {
-        setShowMore(false);
+            setShowMore(false);
         }
         setListings([...listings, ...data]);
     };
@@ -252,9 +252,9 @@ export default function Search() {
             {showMore && (
                 <button
                 onClick={onShowMoreClick}
-                className='text-green-700 hover:underline p-7 text-center w-full'
+                className='bg-amber-100 text-yellow-900 hover:underline p-3 text-center w-full h-10 rounded-lg'
                 >
-                Show more
+                Show more Listings
                 </button>
             )}
             </div>

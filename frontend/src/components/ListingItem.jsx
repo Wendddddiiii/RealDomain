@@ -3,14 +3,14 @@ import { MdLocationOn } from 'react-icons/md';
 
 export default function ListingItem({ listing }) {
     return (
-        <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]'>
+        <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[300px]'>
         <Link to={`/listing/${listing._id}`}>
             <img
             src={
                 listing.imageUrls[0] ||
-                'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                ''
             }
-            alt='listing cover'
+            alt='listing cover updated later'
             className='h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300'
             />
             <div className='p-3 flex flex-col gap-2 w-full'>
