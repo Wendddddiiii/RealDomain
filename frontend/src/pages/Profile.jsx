@@ -102,6 +102,23 @@ export default function Profile() {
     }
   };
 
+  // const handleSignOut = async () => {
+  //   try {
+  //     dispatch(signOutUserStart());
+  //     const res = await fetch('/api/auth/signout');
+  //     const data = await res.json();
+  //     if (data.success === false) {
+  //       dispatch(deleteUserFailure(data.message));
+  //       return;
+  //     }
+  //     dispatch(deleteUserSuccess(data));
+  //     navigate('/sign-in');
+  //   } catch (error) {
+  //     dispatch(deleteUserFailure(data.message));
+  //   }
+  // };
+
+  //edit Sign Out function to implment the reopening website issue
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
@@ -111,13 +128,32 @@ export default function Profile() {
         dispatch(deleteUserFailure(data.message));
         return;
       }
+  
+      // Clear local storage
+      localStorage.clear();
+  
+      // Clear session storage
+      sessionStorage.clear();
+  
+      // Clear cookies
+      const clearCookies = () => {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i];
+          const eqPos = cookie.indexOf('=');
+          const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+          document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+        }
+      };
+      clearCookies();
+  
       dispatch(deleteUserSuccess(data));
       navigate('/sign-in');
     } catch (error) {
-      dispatch(deleteUserFailure(data.message));
+      dispatch(deleteUserFailure(error.message));
     }
   };
-
+  
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
